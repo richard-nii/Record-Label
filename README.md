@@ -1,16 +1,75 @@
-# React + Vite
+# GDS Records — Official Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The official website for **Grind Don't Stop Records**, an independent record label based in Accra, Ghana.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Tech Stack
 
-## React Compiler
+- **Frontend:** React + Vite, Tailwind CSS, React Router
+- **Backend:** Node.js, Express.js
+- **Database:** Firebase Firestore
+- **Auth:** Firebase Authentication
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📄 Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Page | Route |
+|---|---|
+| Home | `/` |
+| About | `/about` |
+| Artists | `/artists` |
+| Artist Profile | `/artists/:id` |
+| Music | `/music` |
+| Events | `/events` |
+| Booking | `/booking` |
+| Contact | `/contact` |
+| Admin Login | `/admin` |
+| Admin Dashboard | `/admin/dashboard` |
+
+---
+
+## ⚙️ Getting Started
+
+**1. Clone the repo**
+```bash
+git clone https://github.com/YOUR_USERNAME/gds-records.git
+cd gds-records
+```
+
+**2. Install dependencies**
+```bash
+npm install
+```
+
+**3. Run the dev server**
+```bash
+npm run dev
+```
+
+Open `http://localhost:5173`
+
+---
+
+## 🌿 Git Workflow
+
+- Never push directly to `main`
+- Create your own branch and work from there
+- Open a Pull Request when your page is done
+- Commit regularly with clear messages
+
+---
+
+## 🎨 Colors & Fonts
+
+| Token | Value |
+|---|---|
+| `gold` | `#C9A84C` |
+| `dark` | `#111111` |
+| `dark2` | `#181818` |
+| `muted` | `#777777` |
+| Display font | Bebas Neue |
+| Label font | Space Mono |
+| Body font | DM Sans |
+
