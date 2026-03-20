@@ -1,7 +1,38 @@
-export default function ArtistProfile() {
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getArtistById } from "../services/api";
+import Loader from "../components/Loader";
+
+function ArtistProfile() {
+  const { id } = useParams();
+  const [artist, setArtist] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getArtistById(id)
+      .then(data => {
+        setArtist(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, [id]);
+
+  if (loading) return <Loader />;
+  if (!artist) return <p>Artist not found</p>;
+
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white flex items-center justify-center font-bebas text-6xl tracking-widest">
-      ArtistProfile — Coming Soon
+    <div>
+      <h1>{artist.name}</h1>
+
+      <img
+        src={artist.image}
+        alt={artist.name}
+        className="w-96"
+      />
+
+      <p>{artist.bio}</p>
     </div>
-  )
+  );
 }
+
+export default ArtistProfile;
