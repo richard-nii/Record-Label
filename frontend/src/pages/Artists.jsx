@@ -6,7 +6,7 @@ import ArtistImage from "../components/ArtistImage";
 const css = `
   @keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
   @keyframes fadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  @keyframes pulse-ring { 0%{transform:scale(1);opacity:0.7} 100%{transform:scale(2.2);opacity:0} }
   .scroll-reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease,transform 0.7s ease; }
   .scroll-reveal.visible { opacity:1; transform:translateY(0); }
   .btn-red:hover   { background:#E53935!important; transform:translateY(-2px); }
@@ -84,7 +84,6 @@ export default function Artists() {
       <section style={{ padding:"160px 60px 80px", background:"#111", position:"relative", overflow:"hidden" }}>
         <div style={{ position:"absolute", top:0, left:0, right:0, height:"4px", background:"linear-gradient(90deg,#D32F2F,#C9A84C,#D32F2F)" }} />
         <div style={{ position:"absolute", top:"50%", left:"50%", transform:"translate(-50%,-50%)", fontFamily:"'Bebas Neue',sans-serif", fontSize:"220px", color:"rgba(211,47,47,0.025)", letterSpacing:"10px", pointerEvents:"none", userSelect:"none", whiteSpace:"nowrap", lineHeight:1 }}>ARTISTS</div>
-
         <div style={{ position:"relative", zIndex:2 }}>
           <div style={{ animation:"fadeUp 0.9s 0.1s both" }}><Tag>Our Roster</Tag></div>
           <h1 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(64px,10vw,140px)", lineHeight:0.88, margin:"0 0 28px", animation:"fadeUp 0.9s 0.25s both" }}>
@@ -101,7 +100,7 @@ export default function Artists() {
       {/* ── FEATURED ARTIST ───────────────────────────────────────────── */}
       <Reveal>
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"2px" }}>
-          {/* Image */}
+          {/* Photo */}
           <div style={{ position:"relative", minHeight:"520px", overflow:"hidden" }}>
             <ArtistImage artist={artists[0]} mode={artists[0].images.length > 1 ? "slideshow" : "cover"} interval={4000} />
             <div style={{ position:"absolute", inset:0, background:"linear-gradient(to right, transparent 60%, rgba(0,0,0,0.6))" }} />
@@ -128,7 +127,6 @@ export default function Artists() {
             <p style={{ fontSize:"14.5px", lineHeight:1.82, color:"#666", marginBottom:"28px" }}>
               {artists[0].bio}
             </p>
-            {/* Accolades — first 3 */}
             <div style={{ display:"flex", flexDirection:"column", gap:"8px", marginBottom:"36px" }}>
               {artists[0].accolades?.slice(0,3).map((a,i) => (
                 <div key={i} style={{ display:"flex", alignItems:"flex-start", gap:"12px", fontSize:"13px", color:"#555" }}>
@@ -145,11 +143,10 @@ export default function Artists() {
                 Book {artists[0].name}
               </a>
             </div>
-            {/* Stats */}
             <div style={{ display:"flex", gap:"32px", marginTop:"40px", paddingTop:"28px", borderTop:"1px solid rgba(255,255,255,0.07)" }}>
               {[
-                { n: artists[0].streams, l: "Streams" },
-                { n: artists[0].shows,   l: "Shows" },
+                { n: artists[0].streams,   l: "Streams" },
+                { n: artists[0].shows,     l: "Shows" },
                 { n: artists[0].countries, l: "Countries" },
               ].map(({ n, l }) => (
                 <div key={l}>
@@ -170,7 +167,6 @@ export default function Artists() {
               <Tag>Full Roster</Tag>
               <h2 style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(48px,7vw,96px)", lineHeight:0.9, margin:0 }}>All Artists</h2>
             </div>
-            {/* Filter buttons */}
             <div style={{ display:"flex", gap:"4px" }}>
               {FILTERS.map(f => (
                 <button key={f} onClick={() => setActiveFilter(f)} className="filter-btn" style={{
@@ -191,17 +187,12 @@ export default function Artists() {
           {filtered.map((artist, i) => (
             <Reveal key={artist.id} delay={i * 80}>
               <Link to={`/artists/${artist.id}`} className="artist-card" style={{ textDecoration:"none", color:"inherit", display:"block", position:"relative", aspectRatio:"2/3", overflow:"hidden", border:"1px solid rgba(255,255,255,0.04)", transition:"border-color 0.3s", cursor:"pointer" }}>
-                {/* Image */}
                 <div className="ac-image" style={{ position:"absolute", inset:0, transition:"transform 0.6s ease" }}>
                   <ArtistImage artist={artist} mode="cover" />
                 </div>
-                {/* Gradient */}
                 <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)" }} />
-                {/* Top bar */}
                 <div className="ac-topbar" style={{ position:"absolute", top:0, left:0, right:0, height:"3px", background:"#D32F2F", transform:"scaleX(0)", transformOrigin:"left", transition:"transform 0.4s" }} />
-                {/* Index */}
                 <div style={{ position:"absolute", top:"20px", right:"20px", fontFamily:"'Bebas Neue',sans-serif", fontSize:"64px", color:"rgba(255,255,255,0.04)", lineHeight:1, userSelect:"none" }}>0{i+1}</div>
-                {/* Info */}
                 <div className="ac-info" style={{ position:"absolute", bottom:0, left:0, right:0, padding:"28px 24px", transform:"translateY(8px)", transition:"transform 0.4s" }}>
                   <div style={{ fontFamily:"'Space Mono',monospace", fontSize:"9px", letterSpacing:"3px", textTransform:"uppercase", color:"#D32F2F", marginBottom:"8px" }}>{artist.genre}</div>
                   <div style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(32px,4vw,52px)", letterSpacing:"1px", lineHeight:1, marginBottom:"6px" }}>{artist.name}</div>
