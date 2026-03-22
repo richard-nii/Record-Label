@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(grep -E \"^\\(express|mongoose|jsonwebtoken|bcryptjs|cors|dotenv|express-validator\\)$\")",
+      "Bash(npm --version)",
+      "Bash(uipro init:*)",
+      "Bash(claude install-skill:*)",
+      "Bash(npx -y @lobehub/market-cli skills install secondsky-claude-skills-motion --agent claude-code)",
+      "Bash(claude mcp:*)",
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"music record label independent ghana afrobeats dark premium luxury\" --design-system --persist -p \"GDS Records\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"music record label independent ghana afrobeats dark premium luxury\" --design-system --persist -p \"GDS Records\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"animation framer motion scroll reveal entrance\" --domain ux)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"music entertainment dark luxury\" --domain landing)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"layout responsive react\" --stack react)"
+    ]
+  }
+}
